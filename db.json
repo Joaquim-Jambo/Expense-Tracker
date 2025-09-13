@@ -31,12 +31,16 @@
       "Date": "12/09/2025"
     },
     {
-      "expenses": {
-        "id": "6ca423dd-04a5-4445-87e3-323b220975b2",
-        "Description": "oi",
-        "Amount": 45.9,
-        "Date": "12/09/2025"
-      }
+      "id": "20cd9842-d0ae-4368-b88f-684ed0654af9",
+      "Description": "Compra no supermercado",
+      "Amount": 120.5,
+      "Date": "13/09/2025"
+    },
+    {
+      "id": "99caa9b5-6969-48b5-bca7-a75d087abe73",
+      "Description": "Teste CLI",
+      "Amount": 100,
+      "Date": "13/09/2025"
     }
   ]
 }

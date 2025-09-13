@@ -47,24 +47,20 @@ export const deleteExpense = async (id) => {
 }
 
 export const updateExpense = async (expenses, id, description, amout) => {
-    const expense = expenses.find((exp) => exp.id === id);
-    if (!expense) {
-        return console.log("Expense not found !")
+    const index = expenses.findIndex(exp => exp.id === id);
+    if (index === -1) {
+        console.log("⚠️ Despesa não encontrada.");
+        return;
     }
-    const newExpense = {};
     if (description && !amout)
-        newExpense.description = description;
+        expenses[index].Description = description;
     else if (amout && !description)
-        newExpense.amount = amout;
+        expenses[index].Amount = amout;
     else {
-        newExpense.amount = amout;
-        newExpense.description = description;
+        expenses[index].Description = description;
+        expenses[index].Amount = amout;
     }
-
-    expense.Description = description;
-    console.log(expense);
-    await insertDb({expenses: expense})
-
+    await saveDb(expenses);
 }
 export const deleteAllExpenses = async () => {
     await saveDb({ expenses: [] })

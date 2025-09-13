@@ -4,74 +4,72 @@ import { createExpense, deleteExpense, getAllExpenses, getSummary, updateExpense
 import { listExpense } from "./utils/index.js";
 
 yargs(hideBin(process.argv))
-    .command('add', 'add an expense with a description and amount.', yargs => {
+    .command('add', '➕ Adicionar uma despesa com descrição e valor.', yargs => {
         return yargs
             .option('description', {
                 type: 'string',
                 alias: ['d', 'desc'],
                 demandOption: true,
-                description: 'Short text describing the expense'
+                description: '📝 Texto curto descrevendo a despesa'
             })
             .option('amount', {
                 type: 'number',
                 alias: ['a', 'amt'],
                 demandOption: true,
-                description: 'Expense amount in numbers (e.g., 20, 49.99)'
+                description: '💰 Valor da despesa em números (ex.: 20, 49.99)'
             })
     }, async (argv) => {
         const expense = await createExpense(argv.description, argv.amount);
-        console.log(`Expense added successfully (ID: ${expense.id})`)
+        console.log(`✅ Despesa adicionada com sucesso (🆔 ${expense.id})`);
     })
-    .command('list', 'List all recorded expenses', () => { }, async () => {
+    .command('list', '📋 Listar todas as despesas registradas', () => { }, async () => {
         const expenses = await getAllExpenses();
-        listExpense(expenses)
+        listExpense(expenses);
     })
-    .command('summary', 'Show the total amount of all expenses', yargs => {
+    .command('summary', '📊 Mostrar o total de todas as despesas', yargs => {
         return yargs
             .option('month', {
                 type: 'number',
                 alias: 'm',
-                description: 'Month of the expense (1–12)'
+                description: '🗓️ Mês da despesa (1–12)'
             })
     }, async (argv) => {
         const summary = await getSummary(argv.month);
-        console.info(`Total expenses: $${summary}`)
+        console.info(`💵 Total de despesas: ${summary} KZ`);
     })
-    .command('update', 'Update an existing expense by ID (you can change description and/or amount)', yargs => {
+    .command('update', '✏️ Atualizar uma despesa existente pelo ID (pode alterar descrição e/ou valor)', yargs => {
         return yargs
             .option('description', {
                 type: 'string',
                 alias: ['d', 'desc'],
-                description: 'Short text describing the expense'
+                description: '📝 Texto curto descrevendo a despesa'
             })
             .option('amount', {
                 type: 'number',
                 alias: ['a', 'amt'],
-                description: 'Expense amount in numbers (e.g., 20, 49.99)'
+                description: '💰 Valor da despesa em números (ex.: 20, 49.99)'
             })
             .option('id', {
                 type: 'string',
                 demandOption: true,
-                description: 'Update an expense by its ID or description'
+                description: '🆔 Atualizar uma despesa pelo seu ID ou descrição'
             })
 
     }, async (argv) => {
         const expenses = await getAllExpenses();
-        const expense = await updateExpense(expenses, argv.id, argv.description, argv.amount)
-        console.log(expense)
+        const expense = await updateExpense(expenses, argv.id, argv.description, argv.amount);
+        console.log(`🔄 Despesa atualizada:`, expense);
     })
-    .command('delete', 'Remove an expense by its ID or description', yargs => {
+    .command('delete', '🗑️ Remover uma despesa pelo seu ID ou descrição', yargs => {
         return yargs
             .option('id', {
                 type: 'string',
                 demandOption: true,
-                description: 'Remove an expense by its ID or description'
+                description: '🆔 Remover uma despesa pelo seu ID ou descrição'
             })
     }, async (argv) => {
         await deleteExpense(argv.id);
-        console.log('Expense deleted successfully')
+        console.log('❌ Despesa removida com sucesso');
     })
     .demandCommand(1)
-    .parse()
-
-
+    .parse();
