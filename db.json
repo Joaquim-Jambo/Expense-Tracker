@@ -1,0 +1,42 @@
+{
+  "expenses": [
+    {
+      "id": "b6d4b502-b246-4c27-81d4-9c7b7bf35a7d",
+      "Description": "Cinema",
+      "Amount": 12,
+      "Date": "12/09/2025"
+    },
+    {
+      "id": "6ca423dd-04a5-4445-87e3-323b220975b2",
+      "Description": "Supermercado",
+      "Amount": 45.9,
+      "Date": "12/09/2025"
+    },
+    {
+      "id": "66356e60-e480-47b1-bee6-f7b959b8be9c",
+      "Description": "Cafe",
+      "Amount": 4,
+      "Date": "12/09/2025"
+    },
+    {
+      "id": "2089165a-7d5a-4ea4-a717-274fcb81efa5",
+      "Description": "Dinner",
+      "Amount": 4,
+      "Date": "12/09/2025"
+    },
+    {
+      "id": "787aa98b-359e-4dd6-a61f-bd2934196b5c",
+      "Description": "Travel",
+      "Amount": 200,
+      "Date": "12/09/2025"
+    },
+    {
+      "expenses": {
+        "id": "6ca423dd-04a5-4445-87e3-323b220975b2",
+        "Description": "oi",
+        "Amount": 45.9,
+        "Date": "12/09/2025"
+      }
+    }
+  ]
+}
