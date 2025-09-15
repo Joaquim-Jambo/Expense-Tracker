@@ -10,6 +10,14 @@ Aplicação de linha de comando para gerenciar despesas pessoais.
 * Listar todas as despesas.
 * Exibir um resumo das despesas (com opção de filtrar por mês).
 
+## 🛠️ Tecnologias  
+
+- [Node.js](https://nodejs.org/) – Runtime para executar JavaScript no servidor.  
+- [Yargs](https://yargs.js.org/) – Parser de argumentos para linha de comando.  
+- [UUID](https://www.npmjs.com/package/uuid) – Geração de identificadores únicos.  
+- [FS](https://nodejs.org/api/fs.html) – Módulo nativo para manipulação de arquivos (JSON).  
+- [Intl.NumberFormat](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) – Formatação de valores monetários.  
+
 ## 📦 Instalação
 
 ### Local
