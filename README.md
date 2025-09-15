@@ -1,23 +1,24 @@
-# 💰 Expense Tracker CLI  
+# 💰 Expense Tracker CLI
 
-Aplicação de linha de comando para gerenciar despesas pessoais.  
+Aplicação de linha de comando para gerenciar despesas pessoais.
 
-## 🚀 Funcionalidades  
+## 🚀 Funcionalidades
 
-- Adicionar uma despesa com descrição e valor.  
-- Atualizar uma despesa existente.  
-- Deletar uma despesa.  
-- Listar todas as despesas.  
-- Exibir um resumo das despesas (com opção de filtrar por mês).  
+* Adicionar uma despesa com descrição e valor.
+* Atualizar uma despesa existente.
+* Deletar uma despesa.
+* Listar todas as despesas.
+* Exibir um resumo das despesas (com opção de filtrar por mês).
 
-## 📦 Instalação  
+## 📦 Instalação
 
-### Local  
+### Local
+
 ```bash
 git clone https://github.com/Joaquim-Jambo/Expense-Tracker
 cd expense-tracker-cli
 npm install
-````
+```
 
 Rodar localmente:
 
@@ -79,9 +80,12 @@ expense-tracker summary --month 9
 
 *(exibe apenas despesas de setembro)*
 
-```
+---
+
+## 📚 Referência
+
+Este projeto foi inspirado no desafio da [roadmap.sh](https://roadmap.sh/projects/expense-tracker).
 
 ---
 
-👉 Queres que eu adicione também uma seção de **Exemplos de saída no terminal** (tipo uma tabela de despesas ou resumo) pra deixar o README mais ilustrativo?
-```
+
