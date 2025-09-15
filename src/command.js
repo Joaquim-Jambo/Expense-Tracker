@@ -1,6 +1,6 @@
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
-import { createExpense, deleteExpense, getAllExpenses, getSummary, updateExpense } from './expenses.js';
+import { createExpense, deleteAllExpenses, deleteExpense, getAllExpenses, getSummary, updateExpense } from './expenses.js';
 import { listExpense } from "./utils/index.js";
 
 yargs(hideBin(process.argv))
@@ -52,7 +52,7 @@ yargs(hideBin(process.argv))
             .option('id', {
                 type: 'string',
                 demandOption: true,
-                description: '🆔 Atualizar uma despesa pelo seu ID ou descrição'
+                description: '🆔 Atualizar uma despesa pelo seu ID'
             })
 
     }, async (argv) => {
@@ -60,16 +60,27 @@ yargs(hideBin(process.argv))
         const expense = await updateExpense(expenses, argv.id, argv.description, argv.amount);
         console.log(`🔄 Despesa atualizada:`, expense);
     })
-    .command('delete', '🗑️ Remover uma despesa pelo seu ID ou descrição', yargs => {
+    .command('delete', '🗑️ Remover uma despesa pelo seu ID ou mesmo remover todas as despesas', yargs => {
         return yargs
             .option('id', {
                 type: 'string',
-                demandOption: true,
-                description: '🆔 Remover uma despesa pelo seu ID ou descrição'
+                description: '🆔 Remover uma despesa pelo seu ID'
+            })
+            .option('all', {
+                type: 'boolean',
+                default: false,
+                description: '❌ Remover todas as despesas !'
             })
     }, async (argv) => {
-        await deleteExpense(argv.id);
-        console.log('❌ Despesa removida com sucesso');
+        if (argv.id) {
+            await deleteExpense(argv.id);
+            console.log('❌ Despesa removida com sucesso');
+        }
+        if (argv.all) {
+            await deleteAllExpenses();
+            console.log("❌ Despesas removidas com sucesso")
+        }
     })
+
     .demandCommand(1)
     .parse();

@@ -33,7 +33,10 @@ export const getSummary = async (month) => {
 
     const summary = exp.reduce((accumulator, { Amount }) =>
         accumulator + (Amount || 0), 0);
-    return (summary);
+    return (`${new Intl.NumberFormat("pt-AO", {
+        style: "currency",
+        currency: "AOA"
+    }).format(summary)}`);
 }
 
 export const deleteExpense = async (id) => {
@@ -48,19 +51,27 @@ export const deleteExpense = async (id) => {
 
 export const updateExpense = async (expenses, id, description, amout) => {
     const index = expenses.findIndex(exp => exp.id === id);
+    const expense = {};
     if (index === -1) {
         console.log("⚠️ Despesa não encontrada.");
         return;
     }
-    if (description && !amout)
+    if (description && !amout) {
         expenses[index].Description = description;
-    else if (amout && !description)
+        expense.Description = description;
+    }
+    else if (amout && !description) {
         expenses[index].Amount = amout;
+        expense.Amount = amout;
+    }
     else {
         expenses[index].Description = description;
         expenses[index].Amount = amout;
+        expense.Amount = amout;
+        expense.Description = description;
     }
-    await saveDb(expenses);
+    await saveDb({ expenses });
+    return expense
 }
 export const deleteAllExpenses = async () => {
     await saveDb({ expenses: [] })
